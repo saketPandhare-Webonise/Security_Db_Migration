@@ -1,10 +1,6 @@
 //
 //  AppDelegate.swift
 //  Security-Demo
-//
-//  Created by Saket Pandhare on 06/09/18.
-//  Copyright © 2018 Saket Pandhare. All rights reserved.
-//
 
 import UIKit
 

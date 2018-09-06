@@ -14,6 +14,7 @@
 		547B6B912141350400DE6208 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 547B6B8F2141350400DE6208 /* LaunchScreen.storyboard */; };
 		547B6B9C2141350400DE6208 /* Security_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B6B9B2141350400DE6208 /* Security_DemoTests.swift */; };
 		547B6BA72141350400DE6208 /* Security_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B6BA62141350400DE6208 /* Security_DemoUITests.swift */; };
+		547B6BB62141373900DE6208 /* SecurityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B6BB52141373900DE6208 /* SecurityVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		547B6BA22141350400DE6208 /* Security-DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Security-DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		547B6BA62141350400DE6208 /* Security_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security_DemoUITests.swift; sourceTree = "<group>"; };
 		547B6BA82141350400DE6208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		547B6BB52141373900DE6208 /* SecurityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		547B6B85214134FC00DE6208 /* Security-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				547B6BB42141364600DE6208 /* SecurityVC */,
 				547B6B86214134FC00DE6208 /* AppDelegate.swift */,
 				547B6B88214134FC00DE6208 /* ViewController.swift */,
 				547B6B8A214134FC00DE6208 /* Main.storyboard */,
@@ -123,6 +126,14 @@
 				547B6BA82141350400DE6208 /* Info.plist */,
 			);
 			path = "Security-DemoUITests";
+			sourceTree = "<group>";
+		};
+		547B6BB42141364600DE6208 /* SecurityVC */ = {
+			isa = PBXGroup;
+			children = (
+				547B6BB52141373900DE6208 /* SecurityVC.swift */,
+			);
+			path = SecurityVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				547B6B89214134FC00DE6208 /* ViewController.swift in Sources */,
+				547B6BB62141373900DE6208 /* SecurityVC.swift in Sources */,
 				547B6B87214134FC00DE6208 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
