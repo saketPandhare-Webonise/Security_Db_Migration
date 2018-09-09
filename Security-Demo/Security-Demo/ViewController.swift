@@ -19,5 +19,10 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func buttonDBPush(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DBVC") as UIViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
