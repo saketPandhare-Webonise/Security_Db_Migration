@@ -10,7 +10,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        dataEncryption()
+//        dataEncryption()
+        tryEncryption()
         
     }
     
@@ -31,35 +32,21 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func buttonPushTapped(_ sender: Any) {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SecurityVC") as UIViewController
-        navigationController?.pushViewController(vc, animated: true)
-    }
+   
     
-    @IBAction func buttonDBPush(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "DBVC") as UIViewController
-        navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-extension Data{
     
-    func aesEncrypt( keyData: Data, ivData: Data, operation: Int) -> Data {
-        let dataLength = self.count
-        let cryptLength  = size_t(dataLength + kCCBlockSizeAES128)
+    func testCrypt(data:Data, keyData:Data, ivData:Data, operation:Int) -> Data {
+        let cryptLength  = size_t(data.count + kCCBlockSizeAES128)
         var cryptData = Data(count:cryptLength)
         
-        let keyLength = size_t(kCCKeySizeAES128)
-        let options = CCOptions(kCCOptionPKCS7Padding)
+        let keyLength             = size_t(kCCKeySizeAES128)
+        let options   = CCOptions(kCCOptionPKCS7Padding)
         
         
         var numBytesEncrypted :size_t = 0
         
         let cryptStatus = cryptData.withUnsafeMutableBytes {cryptBytes in
-            self.withUnsafeBytes {dataBytes in
+            data.withUnsafeBytes {dataBytes in
                 ivData.withUnsafeBytes {ivBytes in
                     keyData.withUnsafeBytes {keyBytes in
                         CCCrypt(CCOperation(operation),
@@ -67,7 +54,7 @@ extension Data{
                                 options,
                                 keyBytes, keyLength,
                                 ivBytes,
-                                dataBytes, dataLength,
+                                dataBytes, data.count,
                                 cryptBytes, cryptLength,
                                 &numBytesEncrypted)
                     }
@@ -85,5 +72,32 @@ extension Data{
         return cryptData;
     }
     
+    func tryEncryption() {
+    let message     = "Don´t try to read this text. Top Secret Stuff"
+    let messageData = message.data(using:String.Encoding.utf8)!
+    let keyData     = "12345678901234567890123456789012".data(using:String.Encoding.utf8)!
+    let ivData      = "abcdefghijklmnop".data(using:String.Encoding.utf8)!
+    let encryptedData = testCrypt(data:messageData,   keyData:keyData, ivData:ivData, operation:kCCEncrypt)
+    let decryptedData = testCrypt(data:encryptedData, keyData:keyData, ivData:ivData, operation:kCCDecrypt)
+    let decrypted     = String(bytes:decryptedData, encoding:String.Encoding.utf8)!
+        print("Decrypted has \(decrypted)")
+    }
+    
+    
+    @IBAction func buttonPushTapped(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SecurityVC") as UIViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func buttonDBPush(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DBVC") as UIViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
 }
+
 
