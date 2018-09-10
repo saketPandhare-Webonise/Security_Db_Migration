@@ -1,0 +1,26 @@
+PODS:
+  - Realm (3.7.6):
+    - Realm/Headers (= 3.7.6)
+  - Realm/Headers (3.7.6)
+  - RealmSwift (3.7.6):
+    - Realm (= 3.7.6)
+  - RNCryptor (5.0.3)
+
+DEPENDENCIES:
+  - RealmSwift
+  - RNCryptor (~> 5.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Realm
+    - RealmSwift
+    - RNCryptor
+
+SPEC CHECKSUMS:
+  Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
+  RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
+  RNCryptor: c93d19029dcf7ff160aca0f24d6c9e7b0d82f664
+
+PODFILE CHECKSUM: 4e8701b6e156df33fef647abedb7c6e683f0f498
+
+COCOAPODS: 1.5.3

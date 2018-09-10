@@ -1,0 +1,36 @@
+platform :ios, '10.0'
+
+def available_pods
+use_frameworks!
+pod 'RealmSwift'
+pod 'RNCryptor', '~> 5.0'
+end
+
+target 'Security-Demo' do
+# Comment this line if you're not using Swift and don't want to use dynamic frameworks
+available_pods
+# Pods for Security-Demo
+target 'Security-DemoTests' do
+inherit! :search_paths
+available_pods
+# Pods for testing
+end
+
+target 'Security-DemoUITests' do
+inherit! :search_paths
+available_pods
+# Pods for testing
+end
+end
+
+post_install do |installer|
+installer.pods_project.targets.each do |target|
+target.build_configurations.each do |config|
+config.build_settings['SWIFT_VERSION'] = '4.0'
+# temp fix for the "IB Designable unable to render..." error
+config.build_settings.delete('CODE_SIGNING_ALLOWED')
+config.build_settings.delete('CODE_SIGNING_REQUIRED')
+end
+end
+end
+
